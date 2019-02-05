@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>留言</title>
+    <link th:href="@{/css/leave_message.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div th:include="fragments::header"></div>
+
+<div class="blk-comment">
+    <!--发表评论-->
+    <div class="comment-form">
+        <div class="hd-comment">
+            <img src="/img/comment.jpg" class="logo-comment"/>
+            <span class="hd-title">留言</span>
+        </div>
+        <div class="bd">
+
+            <form action="#" th:action="@{/addmessage}" th:object="${leavemessage}" method="post"
+                  onSubmit="return beforeSubmit(this);">
+                <div class="editor">
+
+                    <input type="text" id="name" th:field="*{name}" placeholder="请输入姓名"/>
+
+                    <div class="form-inner">
+                        <input id="message" multiple="multiple" class="box" comment-type="cont" th:field="*{message}"
+                               autocomplete="off" placeholder="我有话说..." value
+                               action-type="cmnt-box"/>
+                    </div>
+
+                    <div class="user-head">
+                        <img src="img/comment_head.jpg" class="head-img"/>
+                    </div>
+
+                </div>
+
+                <div class="ft-comment">
+                    <input type="submit" class="button" value="submit"/>
+                </div>
+            </form>
+            <script type="text/javascript">
+                function beforeSubmit(form) {
+                    if (form.name.value == '') {
+                        alert('留下你的名字！');
+                        form.username.focus();
+                        return false;
+                    }
+                    if (form.message.value == '') {
+                        alert('没话说别捣乱！');
+                        form.password.focus();
+                        return false;
+                    }
+
+                    return true;
+                }
+            </script>
+
+        </div>
+
+
+        <!--他人评论-->
+        <div class="community">
+            <div class="community_title">
+                <span class="community_name">留言板</span>
+            </div>
+            <div class="community_list">
+                <div th:each="message:${pageInfo.getList()}">
+                    <!--一条评论-->
+                    <div class="community_item">
+                        <div class="user-head">
+                            <img src="img/comment_head.jpg" class="head-img"/>
+                        </div>
+                        <div class="community_cont">
+                            <div class="user-info">
+                                <span class="user_name" th:text="${message.getName()}"></span>
+                                <div class="user-txt" th:text="${message.getMessage()}"></div>
+                                <div class="community_action">
+                                    <span class="community_date" th:text="${message.getTime()}"></span>
+                                    <!--<a href="" class="report">举报</a>-->
+                                    <!--<span class="btns">-->
+                                    <!--<a href="" class="vote">-->
+                                    <!--<img src="img/like.jpg" class="vote_img"/>-->
+                                    <!--赞-->
+                                    <!--<span class="vote_num">666</span>-->
+                                    <!--</a>-->
+                                    <!--</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <a th:text="${pageInfo.getPageNum()}" id="current_page"></a>/
+                    <a th:text="${pageInfo.getNavigateLastPage()}"></a>
+                </div>
+                <div class="button">
+                    <ul class="pagination">
+                        <li>
+                            <a id="previous_page">Prev</a>
+                        </li>
+                        <li>
+                            <a id="next_page">Next</a>
+                        </li>
+                    </ul>
+                    <script>
+                        $("#previous_page").on("click", function () {
+
+                            var currentPageNum = $("#current_page")[0].innerText;
+                            var requestPageNum = parseInt(currentPageNum) - 1;
+
+                            $.get("/leavemessage/nextpage", {'requestPageNum': requestPageNum}, function (data, status) {
+                                //替换所有的html代码
+                                $("html").html(data)
+
+                            });
+                        })
+                    </script>
+                    <script>
+                        $("#next_page").on("click", function () {
+                            var currentPageNum = $("#current_page")[0].innerText;
+                            var requestPageNum = parseInt(currentPageNum) + 1;
+
+                            $.get("/leavemessage/nextpage", {'requestPageNum': requestPageNum}, function (data, status) {
+                                //替换所有的html代码
+                                $("html").html(data)
+                            });
+                        });
+                    </script>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="fragments::footer"></div>
+
+</body>
+</html>

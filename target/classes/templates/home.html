@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<!--头部-->
+<div th:include="fragments::header"></div>
+
+<!--中间部分-->
+<div class="container">
+    <div class="row clearfix">
+
+        <div class="col-md-12 column">
+            <!--动画窗-->
+            <div class="carousel slide" id="carousel-749688">
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#carousel-749688">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-749688">
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-749688">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img alt="" src="/img/index_head_bg.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                NICE TO MEET YOU
+                            </h4>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="/img/badminton-bg.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                Badminton enthusiast
+                            </h4>
+                            <p>
+                                Never stop loving it.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="/img/computer-bg.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                Software engineering
+                            </h4>
+                            <p>
+                                Sophomore of WHU, major in software engineering.
+                            </p>
+                        </div>
+                    </div>
+                </div> <a class="left carousel-control" href="#carousel-749688" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-749688" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+
+            <div class="row clearfix">
+
+                <!--左侧栏-->
+                <div class="col-md-8 column">
+                    <h3>
+                        WELCOME TO MY WORLD...
+                    </h3>
+                    <img src="img/bug.jpg">
+                    <h3 style="text-align: right;">
+                        …OR AT LEAST MY WEBSITE
+                    </h3>
+                </div>
+
+                <!--右侧栏-->
+                <div class="col-md-4 column">
+                    <img alt="140x140" src="/img/myhead.jpg" class="head-img" />
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>柳庭瑜</td>
+                        </tr>
+                        <tr>
+                            <td>age</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>school</td>
+                            <td>WuHan University</td>
+                        </tr>
+                        <tr>
+                            <td>major</td>
+                            <td>Software engineering</td>
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--尾部-->
+<div th:include="fragments::footer"></div>
+
+</body>
+</html>

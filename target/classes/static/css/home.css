@@ -1,0 +1,10 @@
+.head-img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    color: inherit;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 1px solid #e8e8e8;
+}
+

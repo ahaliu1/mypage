@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>puzzle game</title>
+    <link th:href="@{/css/puzzle.css}" rel="stylesheet"/>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script th:src="@{/js/puzzle.js}"></script>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div th:include="fragments::header"></div>
+    <header>
+
+        <h1 id="h1">puzzle</h1>
+        <p>鼠标点击/键盘控制移动 </p>
+        <div class="flex-info-container" >
+            <a href="javascript:newgame();" id="newgamebutton" class="button">New Game</a>
+            <a href="javascript:hint()" id="hintbutton" class="button">give me a hint</a>
+        </div>
+
+
+        <div class ="flex-info-container">
+            <a>count:<span id="counter" class="infoCell">0</span></a>
+            <a>------</a>
+            <a>time:<span id="timer" class="infoCell">0</span>S</a>
+        </div>
+    </header>
+    <div id="flex-container">
+        <div id="0-0" class="cell" ><img src="" width="120" height="120" id="img-0-0"></div>
+        <div id="0-1" class="cell"><img src="" width="120" height="120" id="img-0-1"></div>
+        <div id="0-2" class="cell"><img src="" width="120" height="120" id="img-0-2"></div>
+        <div id="0-3" class="cell"><img src="" width="120" height="120" id="img-0-3"></div>
+        <div id="1-0" class="cell"><img src="" width="120" height="120" id="img-1-0"></div>
+        <div id="1-1" class="cell"><img src="" width="120" height="120" id="img-1-1"></div>
+        <div id="1-2" class="cell"><img src="" width="120" height="120" id="img-1-2"></div>
+        <div id="1-3" class="cell"><img src="" width="120" height="120" id="img-1-3"></div>
+        <div id="2-0" class="cell"><img src="" width="120" height="120" id="img-2-0"></div>
+        <div id="2-1" class="cell"><img src="" width="120" height="120" id="img-2-1"></div>
+        <div id="2-2" class="cell"><img src="" width="120" height="120" id="img-2-2"></div>
+        <div id="2-3" class="cell"><img src="" width="120" height="120" id="img-2-3"></div>
+        <div id="3-0" class="cell"><img src="" width="120" height="120" id="img-3-0"></div>
+        <div id="3-1" class="cell"><img src="" width="120" height="120" id="img-3-1"></div>
+        <div id="3-2" class="cell"><img src="" width="120" height="120" id="img-3-2"></div>
+        <div id="3-3" class="cell" ><img src="" width="120" height="120" id="img-3-3"></div>
+    </div>
+
+
+<div th:include="fragments::footer"></div>
+</body>
+</html>

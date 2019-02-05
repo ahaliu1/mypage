@@ -1,0 +1,25 @@
+
+/*footer*/
+.footer {
+    text-align: center;
+    color: #666;
+    line-height: 25px;
+    padding: 20px 0;
+    margin-top: 5px;
+}
+
+.footer-inner {
+    margin: 0 auto;
+    width: 1000px;
+    font-size: 11px;
+}
+
+.footer a {
+    color: #666;
+    font-size: 11px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+/*end of foot*/

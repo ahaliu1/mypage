@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>情感分析</title>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div th:include="fragments::header"></div>
+
+
+<div id="LG" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <h3 class="text-center">
+                情感分析
+            </h3>
+            <div align="center">
+                <p class="text-center">
+                    你的每一句输入都由<strong>后台的工作人员</strong>认真判断它的情感
+                </p>
+                <img src="/img/fanmaiji.jpg" class="">
+                <textarea id="input"></textarea>
+                <button class="btn" id="submit">分析</button>
+                <a id="showarea"></a>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" id="positive"
+                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only">40% 完成</span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" id="negative"
+                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only">20% 完成（警告）</span>
+                    </div>
+
+                </div>
+
+                <script>
+                    $("#submit").on("click", function () {
+
+                        var input = $("#input").val();
+
+                        $.get("/sentiment/analysis", {'input': input}, function (data, status) {
+
+                            p = data.toString().substring(2,4);
+                            n=100-p;
+                            p=p+"%";
+                            n=n.toString()+"%";
+                            $("#showarea").html("情感倾向为positive概率："+p);
+                            $("#positive").css("width", p);
+                            $("#negative").css("width", n);
+                        });
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:include="fragments::footer"></div>
+</body>
+</html>
